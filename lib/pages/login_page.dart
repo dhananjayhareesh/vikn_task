@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:iconly/iconly.dart';
 import 'package:vikn_task/utils/constants/textstyle.dart';
 import 'package:vikn_task/utils/strings/logintext.dart';
+import 'package:vikn_task/widgets/button.dart';
 import 'package:vikn_task/widgets/login_background_widget.dart';
 import 'package:vikn_task/widgets/textformfield_widget.dart';
 
@@ -84,34 +85,21 @@ class LoginPage extends StatelessWidget {
                     Text(
                       LoginText.forgotPass,
                       style: AppText.smallBlue,
-                    )
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    SignInButton(
+                      onPressed: () {
+                        //todo
+                      },
+                    ),
                   ],
                 ),
               ),
             ],
           ),
         ),
-      ),
-    );
-  }
-
-  Positioned language() {
-    return Positioned(
-      top: 40,
-      right: 20,
-      child: Row(
-        children: [
-          Image.asset(
-            'assets/translate.png',
-            width: 24,
-            height: 24,
-          ),
-          const SizedBox(width: 8),
-          Text(
-            LoginText.lang,
-            style: AppText.smallWhite,
-          ),
-        ],
       ),
     );
   }

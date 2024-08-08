@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:vikn_task/utils/constants/colors.dart';
+import 'package:vikn_task/utils/constants/textstyle.dart';
+import 'package:vikn_task/utils/strings/logintext.dart';
 
 class CustomTextFormField extends StatelessWidget {
   final String labelText;
@@ -20,7 +22,7 @@ class CustomTextFormField extends StatelessWidget {
     return TextFormField(
       obscureText: obscureText,
       decoration: InputDecoration(
-        prefixIcon: Icon(icon, color: Colors.white),
+        prefixIcon: Icon(icon, color: AppColors.blueColor),
         labelText: labelText,
         labelStyle: TextStyle(color: Colors.white),
         floatingLabelBehavior:
@@ -52,4 +54,25 @@ class CustomTextFormField extends StatelessWidget {
       style: TextStyle(color: Colors.white),
     );
   }
+}
+
+Positioned language() {
+  return Positioned(
+    top: 40,
+    right: 20,
+    child: Row(
+      children: [
+        Image.asset(
+          'assets/translate.png',
+          width: 24,
+          height: 24,
+        ),
+        const SizedBox(width: 8),
+        Text(
+          LoginText.lang,
+          style: AppText.smallWhite,
+        ),
+      ],
+    ),
+  );
 }
