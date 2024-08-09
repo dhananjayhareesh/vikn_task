@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:vikn_task/pages/sales_list_screen.dart';
-import 'package:vikn_task/widgets/custom_appbar.dart';
-import 'package:vikn_task/widgets/custom_botton_navbar_widget.dart';
 import 'package:vikn_task/widgets/custom_home_container_widget.dart';
+import 'package:vikn_task/widgets/home_appbar_widget.dart';
 import 'package:vikn_task/widgets/revenue_container_widget.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -12,7 +10,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: CustomAppBar(),
+      appBar: HomeAppbarWidget(),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: SingleChildScrollView(

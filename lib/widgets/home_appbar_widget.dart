@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
-class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+class HomeAppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   final double height;
 
-  const CustomAppBar({super.key, this.height = 80.0});
+  const HomeAppbarWidget({super.key, this.height = 80.0});
 
   @override
   Widget build(BuildContext context) {
