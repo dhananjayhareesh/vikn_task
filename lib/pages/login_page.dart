@@ -94,12 +94,16 @@ class LoginPage extends StatelessWidget {
                       style: AppText.smallBlue,
                     ),
                     const SizedBox(height: 20),
-                    SignInButton(
-                      onPressed: () {
-                        print('Sign in button presses');
-                        loginController.login();
-                      },
-                    ),
+                    Obx(() {
+                      return loginController.isLoading.value
+                          ? const CircularProgressIndicator()
+                          : SignInButton(
+                              onPressed: () {
+                                print('Sign in button pressed');
+                                loginController.login();
+                              },
+                            );
+                    }),
                   ],
                 ),
               ),

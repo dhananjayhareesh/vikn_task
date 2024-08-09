@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vikn_task/pages/dashboard.dart';
+import 'package:vikn_task/controllers/login_controller.dart';
 import 'package:vikn_task/pages/filter_screen.dart';
 import 'package:vikn_task/pages/home_screen.dart';
 import 'package:vikn_task/pages/login_page.dart';
@@ -7,9 +7,14 @@ import 'package:get/get.dart';
 import 'package:vikn_task/pages/main_screen.dart';
 import 'package:vikn_task/pages/profile_screen.dart';
 import 'package:vikn_task/pages/sales_list_screen.dart';
+import 'package:vikn_task/pages/splash_screen.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  final LoginController loginController = Get.put(LoginController());
+
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -31,8 +36,9 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: '/',
       getPages: [
-        GetPage(name: '/', page: () => LoginPage()),
+        GetPage(name: '/', page: () => SplashScreen()),
         GetPage(name: '/home', page: () => HomeScreen()),
+        GetPage(name: '/login', page: () => LoginPage()),
         GetPage(name: '/profile', page: () => ProfileScreen()),
         GetPage(name: '/main', page: () => MainScreen()),
         GetPage(name: '/sales', page: () => SalesListScreen()),

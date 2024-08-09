@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vikn_task/controllers/login_controller.dart';
 import 'package:vikn_task/controllers/profile_controller.dart';
 import 'package:vikn_task/widgets/profile_inside_container.dart';
 import 'package:vikn_task/widgets/profile_option_widgets.dart';
@@ -154,7 +155,7 @@ class ProfileScreen extends StatelessWidget {
             ),
             TextButton(
               onPressed: () {
-                controller.logout();
+                Get.find<LoginController>().logout();
                 Navigator.of(context).pop();
               },
               child: Text('Logout'),

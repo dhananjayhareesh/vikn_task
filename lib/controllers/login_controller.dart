@@ -9,21 +9,35 @@ class LoginController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   final FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
+  var isLoading = false.obs; // Add this line
+
+  @override
+  void onInit() {
+    super.onInit();
+    checkLoginStatus();
+  }
+
+  Future<void> checkLoginStatus() async {
+    final String? accessToken = await secureStorage.read(key: 'accessToken');
+    if (accessToken != null) {
+      Get.offNamed('/main');
+    } else {
+      Get.offNamed('/login');
+    }
+  }
+
   Future<void> login() async {
     final String username = usernameController.text;
     final String password = passwordController.text;
 
-    // print("Attempting to log in with username: $username");
-
     if (username.isEmpty || password.isEmpty) {
-      // print("Username or password is empty");
       Get.snackbar("Error", "Please fill in all fields");
       return;
     }
 
-    try {
-      // print("Sending login request");
+    isLoading.value = true; // Start loading
 
+    try {
       final response = await http.post(
         Uri.parse('https://api.accounts.vikncodes.com/api/v1/users/login'),
         headers: {'Content-Type': 'application/json'},
@@ -34,14 +48,9 @@ class LoginController extends GetxController {
         }),
       );
 
-      // print("Response status: ${response.statusCode}");
-      // print("Response body: ${response.body}");
-
       if (response.statusCode == 200) {
         final data = jsonDecode(response.body);
         if (data['success'] == 6000) {
-          // print("Login successful");
-
           await secureStorage.write(
               key: 'accessToken', value: data['data']['access']);
           await secureStorage.write(
@@ -49,21 +58,29 @@ class LoginController extends GetxController {
           await secureStorage.write(
               key: 'userId', value: data['data']['user_id'].toString());
 
-          // print("Tokens and user ID saved");
-
           Get.offNamed('/main');
         } else {
           final errorMessage = data['message'] ?? "Email or Password incorrect";
-          // print("Login failed: $errorMessage");
           Get.snackbar("Login Failed", errorMessage);
         }
       } else {
-        // print("Failed to login. Status code: ${response.statusCode}");
         Get.snackbar("Error", "Failed to login. Please try again.");
       }
     } catch (e) {
-      // print("Exception occurred: $e");
       Get.snackbar("Error", "An unexpected error occurred");
+    } finally {
+      isLoading.value = false; // Stop loading
     }
+  }
+
+  Future<void> logout() async {
+    await secureStorage.deleteAll();
+    clearFields();
+    Get.offAllNamed('/');
+  }
+
+  void clearFields() {
+    usernameController.clear();
+    passwordController.clear();
   }
 }
