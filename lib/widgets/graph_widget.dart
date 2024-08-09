@@ -30,7 +30,7 @@ class LineChartWidget extends StatelessWidget {
           drawVerticalLine: false,
         ),
         borderData: FlBorderData(
-          show: false, // Hide the X and Y axis lines
+          show: false,
         ),
         lineBarsData: [
           LineChartBarData(

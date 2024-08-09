@@ -17,7 +17,7 @@ class HomeAppbarWidget extends StatelessWidget implements PreferredSizeWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: Image.asset('assets/applogo.png', height: 40),
             ),
-            Spacer(),
+            const Spacer(),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Image.asset('assets/user.png', height: 60),

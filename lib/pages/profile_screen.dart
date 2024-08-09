@@ -12,7 +12,6 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final ProfileController controller = Get.put(ProfileController());
 
-    // Define the list of images and corresponding text
     final List<Map<String, String>> helpItems = [
       {'image': 'assets/help.png', 'text': 'Help'},
       {'image': 'assets/faq.png', 'text': 'FAQ'},
@@ -31,7 +30,7 @@ class ProfileScreen extends StatelessWidget {
                 return Container(
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
-                    color: Color.fromARGB(135, 62, 62, 62),
+                    color: const Color.fromARGB(135, 62, 62, 62),
                   ),
                   height: 370,
                   width: double.infinity,
@@ -63,7 +62,7 @@ class ProfileScreen extends StatelessWidget {
                                       ),
                               ),
                             ),
-                            SizedBox(width: 20),
+                            const SizedBox(width: 20),
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
@@ -71,7 +70,7 @@ class ProfileScreen extends StatelessWidget {
                                   controller.userName.value.isEmpty
                                       ? 'Loading...'
                                       : controller.userName.value,
-                                  style: TextStyle(fontSize: 20),
+                                  style: const TextStyle(fontSize: 20),
                                 ),
                                 Text(
                                   controller.email.value.isEmpty
@@ -83,19 +82,19 @@ class ProfileScreen extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            Spacer(),
+                            const Spacer(),
                             Padding(
                               padding: const EdgeInsets.only(right: 15),
                               child: Image.asset('assets/edit.png'),
                             ),
                           ],
                         ),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         ProfileInsideContainer(
                           onLogoutTap: () =>
                               _showLogoutDialog(context, controller),
                         ),
-                        SizedBox(height: 30),
+                        const SizedBox(height: 30),
                         GestureDetector(
                           onTap: () => _showLogoutDialog(context, controller),
                           child: Container(
@@ -111,8 +110,8 @@ class ProfileScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Image.asset('assets/logout.png'),
-                                  SizedBox(width: 10),
-                                  Text(
+                                  const SizedBox(width: 10),
+                                  const Text(
                                     'Logout',
                                     style: TextStyle(
                                       color: Colors.red,
@@ -128,7 +127,7 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 );
               }),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               Expanded(
@@ -146,19 +145,19 @@ class ProfileScreen extends StatelessWidget {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('Logout'),
-          content: Text('Are you sure you want to logout?'),
+          title: const Text('Logout'),
+          content: const Text('Are you sure you want to logout?'),
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text('Cancel'),
+              child: const Text('Cancel'),
             ),
             TextButton(
               onPressed: () {
                 Get.find<LoginController>().logout();
                 Navigator.of(context).pop();
               },
-              child: Text('Logout'),
+              child: const Text('Logout'),
             ),
           ],
         );

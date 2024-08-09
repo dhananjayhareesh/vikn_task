@@ -6,6 +6,8 @@ import 'package:vikn_task/pages/profile_screen.dart';
 import 'package:vikn_task/widgets/custom_botton_navbar_widget.dart';
 
 class MainScreen extends StatelessWidget {
+  const MainScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final BottomNavigationController bottomNavController =
@@ -16,15 +18,15 @@ class MainScreen extends StatelessWidget {
         () {
           switch (bottomNavController.selectedIndex.value) {
             case 0:
-              return HomeScreen();
+              return const HomeScreen();
             case 1:
               return Container();
             case 2:
               return Container();
             case 3:
-              return ProfileScreen();
+              return const ProfileScreen();
             default:
-              return HomeScreen();
+              return const HomeScreen();
           }
         },
       ),

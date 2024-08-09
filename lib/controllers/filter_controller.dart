@@ -1,7 +1,6 @@
 import 'package:get/get.dart';
 
 class FilterController extends GetxController {
-  // Variables to track the selected state of each toggle
   var isSelected1 = false.obs;
   var isSelected2 = false.obs;
   var isSelected3 = false.obs;

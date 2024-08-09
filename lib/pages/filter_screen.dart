@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:vikn_task/utils/constants/colors.dart';
 import 'package:vikn_task/widgets/custom_appbar_widget.dart';
 import 'package:vikn_task/widgets/filter_containers_widget.dart';
 import 'package:vikn_task/controllers/filter_controller.dart';
-import 'package:vikn_task/widgets/filter_toggle_widget.dart'; // Import the controller
+import 'package:vikn_task/widgets/filter_toggle_widget.dart';
 
 class FilterScreen extends StatelessWidget {
   const FilterScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    // Instantiate the controller
     final FilterController controller = Get.put(FilterController());
 
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Filters',
-        actions: [
+        actions: const [
           Icon(
             Icons.remove_red_eye_outlined,
-            color: Colors.blue,
+            color: AppColors.blueColor,
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.only(left: 20, right: 20),
             child: Text(
               'Filters',
@@ -34,18 +34,18 @@ class FilterScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Center(
+          const Center(
             child: Padding(
-              padding: const EdgeInsets.only(top: 10.0),
+              padding: EdgeInsets.only(top: 10.0),
               child: MonthContainer(),
             ),
           ),
           const SizedBox(
             height: 20,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: const [
+            children: [
               DateContainer(date: '12/09/2023'),
               SizedBox(width: 20),
               DateContainer(date: '12/09/2023'),
@@ -83,7 +83,7 @@ class FilterScreen extends StatelessWidget {
               ),
             ],
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
           Padding(
@@ -92,11 +92,12 @@ class FilterScreen extends StatelessWidget {
               height: 50,
               width: double.infinity,
               decoration: BoxDecoration(
-                  color: Color.fromARGB(224, 14, 34, 53),
+                  color: const Color.fromARGB(224, 14, 34, 53),
                   borderRadius: BorderRadius.circular(10),
-                  border: Border.all(color: Color.fromARGB(255, 16, 39, 57))),
-              child: Padding(
-                padding: const EdgeInsets.only(left: 10, right: 10),
+                  border:
+                      Border.all(color: const Color.fromARGB(255, 16, 39, 57))),
+              child: const Padding(
+                padding: EdgeInsets.only(left: 10, right: 10),
                 child: Row(
                   children: [
                     Text('Customer'),
@@ -107,23 +108,23 @@ class FilterScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 30,
           ),
           Container(
             height: 0.5,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [Colors.black, Colors.blue, Colors.black],
                 stops: [0.0, 0.5, 1.0],
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 20,
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 30),
+          const Padding(
+            padding: EdgeInsets.only(left: 30),
             child:
                 Align(alignment: Alignment.topLeft, child: CustomerContainer()),
           )

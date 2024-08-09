@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:vikn_task/utils/constants/colors.dart';
+import 'package:vikn_task/utils/constants/textstyle.dart';
+import 'package:vikn_task/utils/strings/hometext.dart';
 import 'package:vikn_task/widgets/graph_widget.dart';
 
 class RevenueContainer extends StatelessWidget {
@@ -9,13 +12,13 @@ class RevenueContainer extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: const Color.fromARGB(136, 43, 43, 43),
+        color: AppColors.containerColor,
       ),
       height: 400,
       width: double.infinity,
       child: Stack(
         children: [
-          const Positioned(
+          Positioned(
             top: 10,
             left: 20,
             child: Column(
@@ -24,36 +27,25 @@ class RevenueContainer extends StatelessWidget {
                 Row(
                   children: [
                     Text(
-                      'SAR',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      Hometext.left1,
+                      style: AppText.grey,
                     ),
-                    SizedBox(width: 10),
+                    const SizedBox(width: 8),
                     Text(
-                      '278,000.00',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
+                      Hometext.left2,
+                      style: AppText.smallWhite,
                     ),
                   ],
                 ),
-                SizedBox(height: 5),
+                const SizedBox(height: 5),
                 Row(
                   children: [
                     Text(
-                      '+21%',
-                      style: TextStyle(
-                        color: Colors.green,
-                        fontSize: 14,
-                      ),
+                      Hometext.left21,
+                      style: AppText.smallGreen,
                     ),
-                    SizedBox(width: 5),
-                    Text(
+                    const SizedBox(width: 5),
+                    const Text(
                       'than last month',
                       style: TextStyle(
                         color: Colors.grey,

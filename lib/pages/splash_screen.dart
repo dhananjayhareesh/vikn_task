@@ -7,7 +7,6 @@ class SplashScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final LoginController loginController = Get.find();
 
-    // Introduce a delay before navigating
     Future.delayed(const Duration(seconds: 3), () {
       loginController.checkLoginStatus();
     });
@@ -18,15 +17,13 @@ class SplashScreen extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // Add your splash screen image here
             Image.asset(
-              'assets/applogo.png', // Replace with your image path
-              width: 150, // Adjust the size as needed
+              'assets/applogo.png',
+              width: 150,
               height: 150,
             ),
             const SizedBox(height: 20),
-            // Optional: Add a loading indicator below the image
-            CircularProgressIndicator(
+            const CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
             ),
           ],

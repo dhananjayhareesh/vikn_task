@@ -5,11 +5,11 @@ import 'package:vikn_task/utils/constants/textstyle.dart';
 class SignInButton extends StatelessWidget {
   final VoidCallback onPressed;
 
-  const SignInButton({required this.onPressed, Key? key}) : super(key: key);
+  const SignInButton({required this.onPressed, super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 45,
       child: ElevatedButton(
         onPressed: onPressed,
@@ -27,7 +27,7 @@ class SignInButton extends StatelessWidget {
               style: AppText.smallWhite,
             ),
             const SizedBox(width: 10),
-            Icon(
+            const Icon(
               Icons.arrow_forward_rounded,
               color: AppColors.whiteColor,
             ),

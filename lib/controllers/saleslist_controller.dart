@@ -11,7 +11,7 @@ class SalesController extends GetxController {
   final currentPage = 1.obs;
   final totalItems = 0.obs;
   final itemsPerPage = 10;
-  final FlutterSecureStorage secureStorage = FlutterSecureStorage();
+  final FlutterSecureStorage secureStorage = const FlutterSecureStorage();
 
   Future<void> fetchSales({bool isRefresh = false}) async {
     if (isLoading.value) return;

@@ -6,20 +6,20 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final double elevation;
   final double toolbarHeight;
 
-  CustomAppBar({
-    Key? key,
+  const CustomAppBar({
+    super.key,
     required this.title,
     this.actions,
     this.elevation = 0.0,
     this.toolbarHeight = 70.0,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 20,
         ),
       ),
@@ -27,10 +27,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       elevation: elevation,
       actions: actions,
       flexibleSpace: Container(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           border: Border(
             bottom: BorderSide(
-              color: const Color.fromARGB(255, 27, 61, 90),
+              color: Color.fromARGB(255, 27, 61, 90),
               width: 0.5,
             ),
           ),

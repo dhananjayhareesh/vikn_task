@@ -18,10 +18,10 @@ class ProfileOptionWidgets extends StatelessWidget {
           child: Row(
             children: [
               Image.asset(helpItems[index]['image']!),
-              SizedBox(width: 20),
+              const SizedBox(width: 20),
               Text(helpItems[index]['text']!),
-              Spacer(),
-              Icon(
+              const Spacer(),
+              const Icon(
                 Icons.arrow_forward_ios_rounded,
                 size: 20,
               ),

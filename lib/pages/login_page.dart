@@ -99,7 +99,7 @@ class LoginPage extends StatelessWidget {
                           ? const CircularProgressIndicator()
                           : SignInButton(
                               onPressed: () {
-                                print('Sign in button pressed');
+                                //  print('Sign in button pressed');
                                 loginController.login();
                               },
                             );

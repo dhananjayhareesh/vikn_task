@@ -26,27 +26,27 @@ class SalesListScreen extends StatelessWidget {
                 CustomSearchBar(
                   onChanged: (value) => controller.searchSales(value),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 Expanded(
                   child: CustomFilterButton(
                     onPressed: () {
-                      Get.to(FilterScreen());
+                      Get.to(const FilterScreen());
                     },
                   ),
                 ),
               ],
             ),
           ),
-          Divider(
-            color: const Color.fromARGB(255, 27, 61, 90),
+          const Divider(
+            color: Color.fromARGB(255, 27, 61, 90),
             thickness: 0.5,
           ),
           Expanded(
             child: Obx(() {
               if (controller.isLoading.value && controller.salesList.isEmpty) {
-                return Center(child: CircularProgressIndicator());
+                return const Center(child: CircularProgressIndicator());
               } else if (controller.filteredSalesList.isEmpty) {
-                return Center(child: Text('No data found'));
+                return const Center(child: Text('No data found'));
               }
 
               return NotificationListener<ScrollNotification>(
@@ -63,11 +63,11 @@ class SalesListScreen extends StatelessWidget {
                       (controller.isLastPage.value ? 0 : 1),
                   itemBuilder: (context, index) {
                     if (index == controller.filteredSalesList.length) {
-                      return Center(child: CircularProgressIndicator());
+                      return const Center(child: CircularProgressIndicator());
                     }
 
                     final sale = controller.filteredSalesList[index];
-                    // Determine color based on sale status
+
                     Color statusColor;
                     switch (sale['Status']) {
                       case 'Invoiced':
@@ -80,12 +80,12 @@ class SalesListScreen extends StatelessWidget {
                         statusColor = Colors.grey;
                         break;
                       default:
-                        statusColor = Colors.black; // Default color
+                        statusColor = Colors.black;
                     }
 
                     return Column(
                       children: [
-                        Container(
+                        SizedBox(
                           height: 70,
                           width: double.infinity,
                           child: Row(
@@ -98,15 +98,15 @@ class SalesListScreen extends StatelessWidget {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text('#${sale['VoucherNo']}',
-                                        style: TextStyle(fontSize: 12)),
+                                        style: const TextStyle(fontSize: 12)),
                                     Text(
                                       sale['CustomerName'],
-                                      style: TextStyle(fontSize: 14),
+                                      style: const TextStyle(fontSize: 14),
                                     ),
                                   ],
                                 ),
                               ),
-                              Spacer(),
+                              const Spacer(),
                               Padding(
                                 padding: const EdgeInsets.only(
                                     right: 10, top: 5, bottom: 5),
@@ -123,7 +123,7 @@ class SalesListScreen extends StatelessWidget {
                                     ),
                                     Row(
                                       children: [
-                                        Text('SAR.',
+                                        const Text('SAR.',
                                             style:
                                                 TextStyle(color: Colors.grey)),
                                         Text('${sale['GrandTotal_Rounded']}'),
@@ -137,7 +137,7 @@ class SalesListScreen extends StatelessWidget {
                         ),
                         Container(
                           height: 0.5,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             gradient: LinearGradient(
                               colors: [Colors.black, Colors.blue, Colors.black],
                               stops: [0.0, 0.5, 1.0],

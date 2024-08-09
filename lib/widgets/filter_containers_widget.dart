@@ -5,9 +5,9 @@ class DateContainer extends StatelessWidget {
   final String date;
 
   const DateContainer({
-    Key? key,
+    super.key,
     required this.date,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,12 +21,12 @@ class DateContainer extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             IconlyBold.calendar,
             size: 20,
             color: Colors.blue,
           ),
-          const SizedBox(width: 5), // Space between icon and text
+          const SizedBox(width: 5),
           Text(
             date,
             style: const TextStyle(fontSize: 12),
@@ -38,7 +38,7 @@ class DateContainer extends StatelessWidget {
 }
 
 class MonthContainer extends StatelessWidget {
-  const MonthContainer({Key? key}) : super(key: key);
+  const MonthContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +49,10 @@ class MonthContainer extends StatelessWidget {
         color: const Color.fromARGB(224, 14, 34, 53),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
+        children: [
           Text(
             'This Month',
             style: TextStyle(fontSize: 12),
@@ -65,7 +65,7 @@ class MonthContainer extends StatelessWidget {
 }
 
 class CustomerContainer extends StatelessWidget {
-  const CustomerContainer({Key? key}) : super(key: key);
+  const CustomerContainer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -76,10 +76,10 @@ class CustomerContainer extends StatelessWidget {
         color: const Color.fromARGB(224, 14, 34, 53),
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Row(
+      child: const Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const [
+        children: [
           Text(
             'Savad farooque',
             style: TextStyle(fontSize: 12),

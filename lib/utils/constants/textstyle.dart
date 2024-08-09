@@ -113,4 +113,9 @@ class AppText {
         fontWeight: FontWeight.w500,
         color: AppColors.blueColor,
       );
+  static TextStyle get smallGreen => GoogleFonts.poppins(
+        fontSize: 15,
+        fontWeight: FontWeight.w500,
+        color: AppColors.greenColor,
+      );
 }

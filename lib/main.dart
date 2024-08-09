@@ -14,7 +14,7 @@ void main() async {
 
   final LoginController loginController = Get.put(LoginController());
 
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -37,12 +37,12 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => SplashScreen()),
-        GetPage(name: '/home', page: () => HomeScreen()),
+        GetPage(name: '/home', page: () => const HomeScreen()),
         GetPage(name: '/login', page: () => LoginPage()),
-        GetPage(name: '/profile', page: () => ProfileScreen()),
-        GetPage(name: '/main', page: () => MainScreen()),
-        GetPage(name: '/sales', page: () => SalesListScreen()),
-        GetPage(name: '/filter', page: () => FilterScreen())
+        GetPage(name: '/profile', page: () => const ProfileScreen()),
+        GetPage(name: '/main', page: () => const MainScreen()),
+        GetPage(name: '/sales', page: () => const SalesListScreen()),
+        GetPage(name: '/filter', page: () => const FilterScreen())
       ],
     );
   }

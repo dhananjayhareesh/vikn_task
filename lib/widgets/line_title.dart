@@ -10,8 +10,8 @@ class LineTitle {
             reservedSize: 32,
             interval: 1,
             getTitlesWidget: (value, meta) {
-              TextStyle style = TextStyle(
-                color: Colors.white, // White text for better contrast
+              TextStyle style = const TextStyle(
+                color: Colors.white,
                 fontSize: 12,
               );
 
@@ -36,7 +36,7 @@ class LineTitle {
                   text = Text('06', style: style);
                   break;
                 default:
-                  return SizedBox.shrink();
+                  return const SizedBox.shrink();
               }
 
               return Container(
@@ -44,7 +44,7 @@ class LineTitle {
                 height: 28,
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  color: Color.fromARGB(255, 29, 29, 29),
+                  color: const Color.fromARGB(255, 29, 29, 29),
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: text,
@@ -56,7 +56,7 @@ class LineTitle {
           sideTitles: SideTitles(
             showTitles: true,
             getTitlesWidget: (value, meta) {
-              TextStyle style = TextStyle(
+              TextStyle style = const TextStyle(
                 color: Colors.grey,
                 fontSize: 12,
               );
@@ -76,15 +76,14 @@ class LineTitle {
                   return Text('', style: style);
               }
             },
-            // reservedSize: 50,
           ),
         ),
-        rightTitles: AxisTitles(
+        rightTitles: const AxisTitles(
           sideTitles: SideTitles(
             showTitles: false,
           ),
         ),
-        topTitles: AxisTitles(
+        topTitles: const AxisTitles(
           sideTitles: SideTitles(
             showTitles: false,
           ),

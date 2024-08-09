@@ -10,14 +10,14 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: HomeAppbarWidget(),
+      appBar: const HomeAppbarWidget(),
       body: Padding(
         padding: const EdgeInsets.all(15.0),
         child: SingleChildScrollView(
           child: Column(
             children: [
-              RevenueContainer(),
-              SizedBox(
+              const RevenueContainer(),
+              const SizedBox(
                 height: 20,
               ),
               CustomContainer(
@@ -27,7 +27,7 @@ class HomeScreen extends StatelessWidget {
                 imagePath: 'assets/sticker.png',
                 onTap: () {},
               ),
-              SizedBox(
+              const SizedBox(
                 height: 20,
               ),
               CustomContainer(

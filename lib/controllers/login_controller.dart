@@ -9,7 +9,7 @@ class LoginController extends GetxController {
   final TextEditingController passwordController = TextEditingController();
   final FlutterSecureStorage secureStorage = FlutterSecureStorage();
 
-  var isLoading = false.obs; // Add this line
+  var isLoading = false.obs;
 
   @override
   void onInit() {
@@ -35,7 +35,7 @@ class LoginController extends GetxController {
       return;
     }
 
-    isLoading.value = true; // Start loading
+    isLoading.value = true;
 
     try {
       final response = await http.post(
@@ -69,7 +69,7 @@ class LoginController extends GetxController {
     } catch (e) {
       Get.snackbar("Error", "An unexpected error occurred");
     } finally {
-      isLoading.value = false; // Stop loading
+      isLoading.value = false;
     }
   }
 

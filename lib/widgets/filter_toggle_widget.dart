@@ -6,11 +6,11 @@ class ToggleContainer extends StatelessWidget {
   final VoidCallback onTap;
 
   const ToggleContainer({
-    Key? key,
+    super.key,
     required this.text,
     required this.isSelected,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,10 +20,8 @@ class ToggleContainer extends StatelessWidget {
         height: 35,
         width: 110,
         decoration: BoxDecoration(
-          color: isSelected
-              ? Colors.blue // Color when selected
-              : const Color.fromARGB(
-                  224, 14, 34, 53), // Color when not selected
+          color:
+              isSelected ? Colors.blue : const Color.fromARGB(224, 14, 34, 53),
           borderRadius: BorderRadius.circular(20),
         ),
         child: Center(

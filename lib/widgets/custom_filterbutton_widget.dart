@@ -19,11 +19,11 @@ class CustomFilterButton extends StatelessWidget {
       icon: Icon(icon, color: Colors.blue),
       label: Text(
         label,
-        style: TextStyle(color: Colors.white),
+        style: const TextStyle(color: Colors.white),
       ),
       style: ElevatedButton.styleFrom(
         backgroundColor: const Color.fromARGB(255, 36, 36, 36),
-        padding: EdgeInsets.symmetric(vertical: 11.0),
+        padding: const EdgeInsets.symmetric(vertical: 11.0),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10.0),
         ),

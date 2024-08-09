@@ -3,8 +3,7 @@ import 'package:flutter/material.dart';
 class ProfileInsideContainer extends StatelessWidget {
   final VoidCallback onLogoutTap;
 
-  const ProfileInsideContainer({Key? key, required this.onLogoutTap})
-      : super(key: key);
+  const ProfileInsideContainer({super.key, required this.onLogoutTap});
 
   @override
   Widget build(BuildContext context) {
@@ -32,18 +31,18 @@ class ProfileInsideContainer extends StatelessWidget {
                     child: Image.asset('assets/stars.png'),
                   ),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Row(
+                    const Row(
                       children: [
                         Text('4.2'),
                         SizedBox(width: 1),
                         Icon(Icons.star, size: 15),
                       ],
                     ),
-                    Text(
+                    const Text(
                       '2,211',
                       style: TextStyle(color: Colors.grey),
                     ),
@@ -57,7 +56,7 @@ class ProfileInsideContainer extends StatelessWidget {
             ),
           ),
         ),
-        Spacer(),
+        const Spacer(),
         Container(
           height: 100,
           width: 160,
@@ -80,11 +79,11 @@ class ProfileInsideContainer extends StatelessWidget {
                     child: Image.asset('assets/shield-tick.png'),
                   ),
                 ),
-                SizedBox(width: 8),
+                const SizedBox(width: 8),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Row(
+                    const Row(
                       children: [
                         Text('KYC'),
                         SizedBox(width: 1),

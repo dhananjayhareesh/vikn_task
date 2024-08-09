@@ -11,7 +11,7 @@ class CustomContainer extends StatelessWidget {
   final VoidCallback onTap;
 
   const CustomContainer({
-    Key? key,
+    super.key,
     required this.title,
     required this.subtitle,
     required this.status,
@@ -20,7 +20,7 @@ class CustomContainer extends StatelessWidget {
     this.imageBackgroundColor = const Color.fromARGB(246, 239, 227, 224),
     this.textColor = Colors.white,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +46,7 @@ class CustomContainer extends StatelessWidget {
                 child: Image.asset(imagePath),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               width: 5,
             ),
             Padding(
@@ -64,12 +64,12 @@ class CustomContainer extends StatelessWidget {
                   ),
                   Text(
                     status,
-                    style: TextStyle(fontSize: 12, color: Colors.grey),
+                    style: const TextStyle(fontSize: 12, color: Colors.grey),
                   )
                 ],
               ),
             ),
-            Spacer(),
+            const Spacer(),
             GestureDetector(
               onTap: onTap,
               child: Container(
