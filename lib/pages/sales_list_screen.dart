@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:vikn_task/controllers/saleslist_controller.dart';
 import 'package:vikn_task/widgets/custom_appbar_widget.dart';
 import 'package:vikn_task/widgets/custom_filterbutton_widget.dart';
 import 'package:vikn_task/widgets/custom_searchbar_widget.dart';
@@ -8,6 +10,8 @@ class SalesListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SalesController controller = Get.put(SalesController());
+
     return Scaffold(
       appBar: CustomAppBar(
         title: 'Invoices',
@@ -22,7 +26,9 @@ class SalesListScreen extends StatelessWidget {
                 SizedBox(width: 10),
                 Expanded(
                   child: CustomFilterButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      // Filter logic here
+                    },
                   ),
                 ),
               ],
@@ -33,79 +39,114 @@ class SalesListScreen extends StatelessWidget {
             thickness: 0.5,
           ),
           Expanded(
-            child: ListView.builder(
-              itemCount: 10, // Number of list items
-              itemBuilder: (context, index) {
-                return Column(
-                  children: [
-                    Container(
-                      height: 70,
-                      width: double.infinity,
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 10, top: 5, bottom: 5),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  '#Invoice No',
-                                  style: TextStyle(fontSize: 12),
-                                ),
-                                Text('Customer Name'),
-                              ],
-                            ),
-                          ),
-                          Spacer(),
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                right: 10, top: 5, bottom: 5),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.end,
-                              children: [
-                                Text(
-                                  'Pending',
-                                  style: TextStyle(fontSize: 12),
-                                ),
-                                Row(
+            child: Obx(() {
+              if (controller.isLoading.value && controller.salesList.isEmpty) {
+                return Center(child: CircularProgressIndicator());
+              } else if (controller.salesList.isEmpty) {
+                return Center(child: Text('No data found'));
+              }
+
+              return NotificationListener<ScrollNotification>(
+                onNotification: (ScrollNotification scrollInfo) {
+                  if (!controller.isLastPage.value &&
+                      scrollInfo.metrics.pixels ==
+                          scrollInfo.metrics.maxScrollExtent) {
+                    controller.fetchSales();
+                  }
+                  return true;
+                },
+                child: ListView.builder(
+                  itemCount: controller.salesList.length +
+                      (controller.isLastPage.value ? 0 : 1),
+                  itemBuilder: (context, index) {
+                    if (index == controller.salesList.length) {
+                      return Center(child: CircularProgressIndicator());
+                    }
+
+                    final sale = controller.salesList[index];
+                    // Determine color based on sale status
+                    Color statusColor;
+                    switch (sale['Status']) {
+                      case 'Invoiced':
+                        statusColor = Colors.blue;
+                        break;
+                      case 'Pending':
+                        statusColor = Colors.red;
+                        break;
+                      case 'Cancelled':
+                        statusColor = Colors.grey;
+                        break;
+                      default:
+                        statusColor = Colors.black; // Default color
+                    }
+
+                    return Column(
+                      children: [
+                        Container(
+                          height: 70,
+                          width: double.infinity,
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 10, top: 5, bottom: 5),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
+                                    Text('#${sale['VoucherNo']}',
+                                        style: TextStyle(fontSize: 12)),
                                     Text(
-                                      'SAR.',
-                                      style: TextStyle(color: Colors.grey),
+                                      sale['CustomerName'],
+                                      style: TextStyle(fontSize: 14),
                                     ),
-                                    Text('10,000.00')
                                   ],
                                 ),
-                              ],
+                              ),
+                              Spacer(),
+                              Padding(
+                                padding: const EdgeInsets.only(
+                                    right: 10, top: 5, bottom: 5),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      sale['Status'],
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: statusColor,
+                                      ),
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text('SAR.',
+                                            style:
+                                                TextStyle(color: Colors.grey)),
+                                        Text('${sale['GrandTotal_Rounded']}'),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 0.5,
+                          decoration: BoxDecoration(
+                            gradient: LinearGradient(
+                              colors: [Colors.black, Colors.blue, Colors.black],
+                              stops: [0.0, 0.5, 1.0],
                             ),
                           ),
-                        ],
-                      ),
-                    ),
-                    Container(
-                      height: 0.5, // Thickness of the divider
-                      decoration: BoxDecoration(
-                        gradient: LinearGradient(
-                          colors: [
-                            Colors.black,
-                            Colors.blue,
-                            Colors.black
-                          ], // Gradient colors
-                          stops: [
-                            0.0,
-                            0.5,
-                            1.0
-                          ], // Adjusting the position of colors
                         ),
-                      ),
-                    ),
-                  ],
-                );
-              },
-            ),
+                      ],
+                    );
+                  },
+                ),
+              );
+            }),
           ),
         ],
       ),

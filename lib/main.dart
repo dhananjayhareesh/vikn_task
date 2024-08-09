@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           titleTextStyle: TextStyle(color: Colors.white),
         ),
       ),
-      initialRoute: '/main',
+      initialRoute: '/',
       getPages: [
         GetPage(name: '/', page: () => LoginPage()),
         GetPage(name: '/home', page: () => HomeScreen()),
