@@ -5,6 +5,7 @@ import 'dart:convert';
 
 class SalesController extends GetxController {
   final salesList = <Map<String, dynamic>>[].obs;
+  final filteredSalesList = <Map<String, dynamic>>[].obs;
   final isLoading = false.obs;
   final isLastPage = false.obs;
   final currentPage = 1.obs;
@@ -20,6 +21,7 @@ class SalesController extends GetxController {
       currentPage.value = 1;
       isLastPage.value = false;
       salesList.clear();
+      filteredSalesList.clear();
     }
 
     try {
@@ -56,6 +58,7 @@ class SalesController extends GetxController {
           List<Map<String, dynamic>> salesData =
               List<Map<String, dynamic>>.from(data['data']);
           salesList.addAll(salesData);
+          filteredSalesList.addAll(salesData);
 
           totalItems.value = data['total_count'];
           isLastPage.value = salesList.length >= totalItems.value;
@@ -70,6 +73,21 @@ class SalesController extends GetxController {
       Get.snackbar('Error', 'An unexpected error occurred');
     } finally {
       isLoading.value = false;
+    }
+  }
+
+  void searchSales(String query) {
+    if (query.isEmpty) {
+      filteredSalesList.assignAll(salesList);
+    } else {
+      filteredSalesList.assignAll(
+        salesList.where((sale) =>
+            sale['VoucherNo'].toString().contains(query) ||
+            sale['CustomerName']
+                .toString()
+                .toLowerCase()
+                .contains(query.toLowerCase())),
+      );
     }
   }
 

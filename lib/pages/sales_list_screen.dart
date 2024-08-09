@@ -23,7 +23,9 @@ class SalesListScreen extends StatelessWidget {
             padding: const EdgeInsets.only(left: 20, top: 10, right: 20),
             child: Row(
               children: [
-                CustomSearchBar(),
+                CustomSearchBar(
+                  onChanged: (value) => controller.searchSales(value),
+                ),
                 SizedBox(width: 10),
                 Expanded(
                   child: CustomFilterButton(
@@ -43,7 +45,7 @@ class SalesListScreen extends StatelessWidget {
             child: Obx(() {
               if (controller.isLoading.value && controller.salesList.isEmpty) {
                 return Center(child: CircularProgressIndicator());
-              } else if (controller.salesList.isEmpty) {
+              } else if (controller.filteredSalesList.isEmpty) {
                 return Center(child: Text('No data found'));
               }
 
@@ -57,14 +59,14 @@ class SalesListScreen extends StatelessWidget {
                   return true;
                 },
                 child: ListView.builder(
-                  itemCount: controller.salesList.length +
+                  itemCount: controller.filteredSalesList.length +
                       (controller.isLastPage.value ? 0 : 1),
                   itemBuilder: (context, index) {
-                    if (index == controller.salesList.length) {
+                    if (index == controller.filteredSalesList.length) {
                       return Center(child: CircularProgressIndicator());
                     }
 
-                    final sale = controller.salesList[index];
+                    final sale = controller.filteredSalesList[index];
                     // Determine color based on sale status
                     Color statusColor;
                     switch (sale['Status']) {

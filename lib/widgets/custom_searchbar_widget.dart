@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 
 class CustomSearchBar extends StatelessWidget {
   final double width;
+  final ValueChanged<String> onChanged;
 
-  const CustomSearchBar({super.key, this.width = 200});
+  const CustomSearchBar({super.key, this.width = 200, required this.onChanged});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: width,
       child: TextField(
+        onChanged: onChanged,
         decoration: InputDecoration(
           prefixIcon: Icon(Icons.search, color: Colors.grey),
           hintText: 'Search',
