@@ -8,25 +8,27 @@ class CustomTextFormField extends StatelessWidget {
   final IconData icon;
   final bool obscureText;
   final BorderRadius borderRadius;
+  final TextEditingController? controller;
 
   const CustomTextFormField({
     required this.labelText,
     required this.icon,
     this.obscureText = false,
     required this.borderRadius,
-    Key? key,
-  }) : super(key: key);
+    this.controller,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
         prefixIcon: Icon(icon, color: AppColors.blueColor),
         labelText: labelText,
         labelStyle: TextStyle(color: Colors.white),
-        floatingLabelBehavior:
-            FloatingLabelBehavior.never, // Keeps label in place
+        floatingLabelBehavior: FloatingLabelBehavior.never,
         border: OutlineInputBorder(
           borderRadius: borderRadius,
           borderSide: BorderSide(

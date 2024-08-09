@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:vikn_task/pages/dashboard.dart';
 import 'package:vikn_task/pages/login_page.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,10 +13,14 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Vikn Sales App',
       debugShowCheckedModeBanner: false,
-      home: LoginPage(),
+      initialRoute: '/',
+      getPages: [
+        GetPage(name: '/', page: () => LoginPage()),
+        GetPage(name: '/dashboard', page: () => DashboardPage()),
+      ],
     );
   }
 }
