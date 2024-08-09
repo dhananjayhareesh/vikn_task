@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vikn_task/controllers/profile_controller.dart';
 import 'package:vikn_task/widgets/profile_inside_container.dart';
+import 'package:vikn_task/widgets/profile_option_widgets.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -9,6 +10,15 @@ class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final ProfileController controller = Get.put(ProfileController());
+
+    // Define the list of images and corresponding text
+    final List<Map<String, String>> helpItems = [
+      {'image': 'assets/help.png', 'text': 'Help'},
+      {'image': 'assets/faq.png', 'text': 'FAQ'},
+      {'image': 'assets/invite.png', 'text': 'Invite Frinds'},
+      {'image': 'assets/terms.png', 'text': 'Terms of services'},
+      {'image': 'assets/privacy.png', 'text': 'Privacy Policy'},
+    ];
 
     return Scaffold(
       body: SafeArea(
@@ -117,6 +127,12 @@ class ProfileScreen extends StatelessWidget {
                   ),
                 );
               }),
+              SizedBox(
+                height: 20,
+              ),
+              Expanded(
+                child: ProfileOptionWidgets(helpItems: helpItems),
+              ),
             ],
           ),
         ),

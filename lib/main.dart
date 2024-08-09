@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:vikn_task/pages/dashboard.dart';
+import 'package:vikn_task/pages/filter_screen.dart';
 import 'package:vikn_task/pages/home_screen.dart';
 import 'package:vikn_task/pages/login_page.dart';
 import 'package:get/get.dart';
@@ -35,6 +36,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: '/profile', page: () => ProfileScreen()),
         GetPage(name: '/main', page: () => MainScreen()),
         GetPage(name: '/sales', page: () => SalesListScreen()),
+        GetPage(name: '/filter', page: () => FilterScreen())
       ],
     );
   }

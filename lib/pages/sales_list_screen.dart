@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:vikn_task/controllers/saleslist_controller.dart';
+import 'package:vikn_task/pages/filter_screen.dart';
 import 'package:vikn_task/widgets/custom_appbar_widget.dart';
 import 'package:vikn_task/widgets/custom_filterbutton_widget.dart';
 import 'package:vikn_task/widgets/custom_searchbar_widget.dart';
@@ -27,7 +28,7 @@ class SalesListScreen extends StatelessWidget {
                 Expanded(
                   child: CustomFilterButton(
                     onPressed: () {
-                      // Filter logic here
+                      Get.to(FilterScreen());
                     },
                   ),
                 ),

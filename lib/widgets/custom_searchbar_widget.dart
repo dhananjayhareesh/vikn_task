@@ -13,7 +13,7 @@ class CustomSearchBar extends StatelessWidget {
         decoration: InputDecoration(
           prefixIcon: Icon(Icons.search, color: Colors.grey),
           hintText: 'Search',
-          fillColor: const Color.fromARGB(255, 36, 36, 36),
+          fillColor: Color.fromARGB(255, 36, 36, 36),
           hintStyle: TextStyle(color: Colors.grey),
           filled: true,
           enabledBorder: OutlineInputBorder(
@@ -24,7 +24,7 @@ class CustomSearchBar extends StatelessWidget {
             ),
           ),
           focusedBorder: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30.0),
+            borderRadius: BorderRadius.circular(10.0),
             borderSide: BorderSide(
               color: Colors.blue,
               width: 2.0,
