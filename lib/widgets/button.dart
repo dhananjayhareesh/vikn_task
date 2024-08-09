@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconly/iconly.dart';
 import 'package:vikn_task/utils/constants/colors.dart';
 import 'package:vikn_task/utils/constants/textstyle.dart';
 

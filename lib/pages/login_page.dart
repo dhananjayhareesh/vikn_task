@@ -110,12 +110,12 @@ class LoginPage extends StatelessWidget {
                 child: Column(
                   children: [
                     Text(
-                      "Don't have an account?",
+                      LoginText.noAccount,
                       style: AppText.smallWhite,
                     ),
                     const SizedBox(height: 5),
                     Text(
-                      "Sign up now!",
+                      LoginText.signUp,
                       style: AppText.smallBlue,
                     ),
                   ],
