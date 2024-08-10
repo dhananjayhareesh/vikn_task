@@ -45,28 +45,18 @@ class RevenueContainer extends StatelessWidget {
                       style: AppText.smallGreen,
                     ),
                     const SizedBox(width: 5),
-                    const Text(
-                      'than last month',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 14,
-                      ),
-                    ),
+                    Text(Hometext.left4, style: AppText.smallGrey),
                   ],
                 ),
               ],
             ),
           ),
-          const Positioned(
+          Positioned(
             top: 10,
             right: 20,
             child: Text(
-              'Revenue',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-              ),
+              Hometext.revenue,
+              style: AppText.smallWhite,
             ),
           ),
           Padding(
