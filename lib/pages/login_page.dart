@@ -89,6 +89,7 @@ class LoginPage extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 20),
+                    Text('this is bug fix'),
                     Text(
                       LoginText.forgotPass,
                       style: AppText.smallBlue,
